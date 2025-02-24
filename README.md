@@ -61,7 +61,7 @@ public class Ejercicio3 {
 }
 ```
 
-#Ejercicio4
+## Ejercicio4
 ```sh
 import javax.swing.JOptionPane;
 
