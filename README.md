@@ -300,3 +300,85 @@ public class Ejercicio10 {
 }
 
 ```
+
+## Ejercicio11
+```sh
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Ejercicio11 {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce la longitud de la combinacion");
+        int longitud = sc.nextInt();
+        int combSecre[] = new int[longitud]; //combinacion secreta
+        int combJuga[] = new int[longitud]; //combinacion jugador
+        
+        generaCombinacion(combSecre);//generamos aleatoriamente la combinación secreta
+        System.out.println(Arrays.toString(combSecre));
+        System.out.println("Escriba una combinacion");
+        
+        leeTabla(combJuga);
+        
+        while (!Arrays.equals(combSecre, combJuga)) { //no sean iguales
+            muestraPista(combSecre, combJuga); //mostramos las pistas
+            System.out.println("Escriba una combinacion: ");
+            leeTabla(combJuga);  //volvemos a pedir otra combinacion
+        }
+        System.out.println("La camara esta abierta");
+    }
+    
+    static void generaCombinacion(int t[]){
+        final int MAX = 5;
+        for (int i = 0; i < t.length; i++) { //recorremos para leer
+            t[i] = (int) (Math.random()*MAX + 1);
+        }
+    }
+    
+    static void leeTabla(int t[]){
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < t.length; i++) {
+            t[i] = sc.nextInt();
+        }
+    }
+    
+    static void muestraPista(int secre[], int jug[]){
+        System.out.println("Pistas:");
+        for (int i = 0; i < jug.length; i++) {
+            System.out.println(jug[i]);
+            if (secre[i] > jug[i]) {
+                System.out.println("mayor");
+            }else if (secre[i] < jug[i]){
+                System.out.println("menor");
+            }else{
+                System.out.println("Igual");
+            }
+        }
+    }
+}
+```
+
+## Ejercicio12
+```sh
+import java.util.Arrays;
+
+public class Ejercicio12 {
+    public static void main(String[] args){
+        int t[][];
+        t = new int[5][5];
+        
+        for (int n = 0; n < 5; n++) {
+            for (int m = 0; m < 5; m++) {
+                t[n][m] = 10*n + m;
+            }
+        }
+        System.out.println(Arrays.deepToString(t));
+        for (int fila[] : t) { //los ':' significan un '=' en este caso le está dando los valores de fila a t
+            for (int columna : fila) { //en este caso le está dando los valores de columan a fila
+                System.out.print(columna + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
