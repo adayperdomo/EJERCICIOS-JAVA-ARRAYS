@@ -259,7 +259,57 @@ public class Ejercicio5{
     }
 }
 ```
+```sh
+import java.util.Arrays;
+import java.util.Scanner;
 
+public class Ejercicio5 {
+    private int numero;
+    private int fin;
+    private int[] pares;
+
+    // El constructor solicita los parámetros y genera la tabla de pares
+    public Ejercicio5(int numero, int fin) {
+        this.numero = numero;
+        this.fin = fin;
+        this.pares = rellenarPares(numero, fin);
+    }
+
+    // Método privado que genera un arreglo de números pares aleatorios y lo ordena
+    private int[] rellenarPares(int longitud, int fin) {
+        int[] array = new int[longitud];
+        int i = 0;
+        while (i < array.length) {
+            int random = (int) (Math.random() * fin + 1);
+            if (random % 2 == 0) {
+                array[i] = random;
+                i++;
+            }
+        }
+        Arrays.sort(array);
+        return array;
+    }
+
+    // Muestra la tabla generada
+    public void mostrarTablaPares() {
+        System.out.println("El resultado de la tabla con números pares es: " + Arrays.toString(pares));
+    }
+
+    public static void main(String[] args) {
+        Scanner usuario = new Scanner(System.in);
+        System.out.println("Bienvenido al programa, por favor, introduzca su nombre:");
+        String nombre = usuario.nextLine();
+        System.out.println("Bienvenido " + nombre + ". Introduzca la longitud de la tabla:");
+        int numero = usuario.nextInt();
+        System.out.println("Introduzca el número final (límite):");
+        int fin = usuario.nextInt();
+        Ejercicio5 tabla = new Ejercicio5(numero, fin);
+        tabla.mostrarTablaPares();
+        usuario.close();
+    }
+}
+
+```
 ## Ejercicio6
 ```sh
 public class Ejercicio6 {
