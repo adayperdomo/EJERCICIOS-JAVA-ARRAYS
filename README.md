@@ -479,7 +479,52 @@ public class Ejercicio8 {
     }
 }
 ```
+```sh
+import java.util.Arrays;
+import java.util.Scanner;
 
+public class Ejercicio8 {
+    private int[] datos;
+    private int[] pares;
+    private int[] impares;
+
+    // El constructor solicita la cantidad de números, los lee y los clasifica
+    public Ejercicio8() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Escriba n: ");
+        int n = sc.nextInt();
+        datos = new int[n];
+        System.out.println("Introduzca " + n + " números:");
+        for (int i = 0; i < n; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            datos[i] = sc.nextInt();
+        }
+        pares = new int[0];
+        impares = new int[0];
+        for (int numero : datos) {
+            if (numero % 2 == 0) {
+                pares = Arrays.copyOf(pares, pares.length + 1);
+                pares[pares.length - 1] = numero;
+            } else {
+                impares = Arrays.copyOf(impares, impares.length + 1);
+                impares[impares.length - 1] = numero;
+            }
+        }
+    }
+
+    // Muestra los arreglos de números pares e impares
+    public void mostrarResultados() {
+        System.out.println("Pares: " + Arrays.toString(pares));
+        System.out.println("Impares: " + Arrays.toString(impares));
+    }
+
+    public static void main(String[] args) {
+        Ejercicio8 ej8 = new Ejercicio8();
+        ej8.mostrarResultados();
+    }
+}
+
+```
 ## Ejercicio9
 ```sh
 import java.util.Arrays;
