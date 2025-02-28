@@ -750,6 +750,77 @@ public class Ejercicio11 {
 }
 ```
 
+```sh
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Ejercicio11 {
+    private int[] combinacionSecreta;
+    private int[] combinacionJugador;
+    private int longitud;
+
+    // El constructor inicializa la longitud, crea el arreglo secreto y lo genera aleatoriamente
+    public Ejercicio11(int longitud) {
+        this.longitud = longitud;
+        combinacionSecreta = new int[longitud];
+        combinacionJugador = new int[longitud];
+        generaCombinacion(combinacionSecreta);
+    }
+
+    // Genera la combinación secreta con números entre 1 y 5
+    private void generaCombinacion(int[] t) {
+        final int MAX = 5;
+        for (int i = 0; i < t.length; i++) {
+            t[i] = (int) (Math.random() * MAX + 1);
+        }
+    }
+
+    // Lee la combinación del jugador
+    private void leeCombinacion(Scanner sc) {
+        System.out.println("Introduce tu combinación (separada por espacios):");
+        for (int i = 0; i < combinacionJugador.length; i++) {
+            combinacionJugador[i] = sc.nextInt();
+        }
+    }
+
+    // Muestra las pistas comparando cada posición
+    private void muestraPista() {
+        System.out.println("Pistas:");
+        for (int i = 0; i < combinacionJugador.length; i++) {
+            if (combinacionSecreta[i] > combinacionJugador[i]) {
+                System.out.println("Posición " + (i + 1) + ": mayor");
+            } else if (combinacionSecreta[i] < combinacionJugador[i]) {
+                System.out.println("Posición " + (i + 1) + ": menor");
+            } else {
+                System.out.println("Posición " + (i + 1) + ": igual");
+            }
+        }
+    }
+
+    // Método para ejecutar el juego
+    public void jugar() {
+        Scanner sc = new Scanner(System.in);
+        // (Opcional) Mostrar la combinación secreta para pruebas
+        System.out.println("Combinación secreta (para depuración): " + Arrays.toString(combinacionSecreta));
+        leeCombinacion(sc);
+        while (!Arrays.equals(combinacionSecreta, combinacionJugador)) {
+            muestraPista();
+            System.out.println("Inténtalo de nuevo:");
+            leeCombinacion(sc);
+        }
+        System.out.println("¡La cámara está abierta!");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Introduce la longitud de la combinación: ");
+        int longitud = sc.nextInt();
+        Ejercicio11 juego = new Ejercicio11(longitud);
+        juego.jugar();
+    }
+}
+
+```
 ## Ejercicio12
 ```sh
 import java.util.Arrays;
@@ -773,4 +844,40 @@ public class Ejercicio12 {
         }
     }
 }
+```
+
+```sh
+import java.util.Arrays;
+
+public class Ejercicio12 {
+    private int[][] t;
+
+    // El constructor inicializa la matriz 5x5 y la rellena con valores
+    public Ejercicio12() {
+        t = new int[5][5];
+        for (int n = 0; n < 5; n++) {
+            for (int m = 0; m < 5; m++) {
+                t[n][m] = 10 * n + m;
+            }
+        }
+    }
+
+    // Muestra la matriz de dos formas
+    public void mostrarMatriz() {
+        System.out.println("Matriz (Arrays.deepToString): " + Arrays.deepToString(t));
+        System.out.println("Matriz formateada:");
+        for (int[] fila : t) {
+            for (int columna : fila) {
+                System.out.print(columna + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Ejercicio12 ej12 = new Ejercicio12();
+        ej12.mostrarMatriz();
+    }
+}
+
 ```
