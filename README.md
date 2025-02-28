@@ -649,7 +649,50 @@ public class Ejercicio10 {
 }
 
 ```
+```sh
+import java.util.Arrays;
 
+public class Ejercicio10 {
+    private int[] original;
+    private int valorLimite;
+    private int[] resultado;
+
+    // El constructor recibe el arreglo y el valor límite, y procesa la eliminación
+    public Ejercicio10(int[] array, int valorLimite) {
+        this.original = array;
+        this.valorLimite = valorLimite;
+        this.resultado = eliminarMayores(original, valorLimite);
+    }
+
+    // Método privado que elimina los elementos mayores al valor dado
+    private int[] eliminarMayores(int[] t, int valor) {
+        int[] copia = Arrays.copyOf(t, t.length);
+        int i = 0;
+        while (i < copia.length) {
+            if (copia[i] > valor) {
+                copia[i] = copia[copia.length - 1];
+                copia = Arrays.copyOf(copia, copia.length - 1);
+            } else {
+                i++;
+            }
+        }
+        return copia;
+    }
+
+    // Muestra el arreglo resultante
+    public void mostrarResultado() {
+        System.out.println("Array después de eliminar valores mayores a " + valorLimite + ": " + Arrays.toString(resultado));
+    }
+
+    public static void main(String[] args) {
+        int[] t = {1, 2, 3, 4, 5};
+        int valor = 3;
+        Ejercicio10 ej10 = new Ejercicio10(t, valor);
+        ej10.mostrarResultado();
+    }
+}
+
+```
 ## Ejercicio11
 ```sh
 import java.util.Arrays;
