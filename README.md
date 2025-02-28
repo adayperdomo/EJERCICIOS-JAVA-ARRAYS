@@ -14,6 +14,41 @@ public class Ejercicio1 {
 }
 ```
 
+```sh
+package com.mycompany.ut6;
+
+public class Ejercicio1 {
+
+    private int[] array;
+    private int suma;
+
+    // Constructor que inicializa el arreglo y calcula la suma
+    public Ejercicio1() {
+        array = new int[10];
+        suma = 0;
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (int) (Math.random() * 100);
+            System.out.println(array[i] + " + " + suma);
+            suma += array[i];
+        }
+    }
+
+    // Método para mostrar el resultado
+    public void mostrarResultado() {
+        System.out.println("La suma de todos los números es " + suma);
+    }
+
+    public static void main(String[] args) {
+        // Se crea una instancia de Ejercicio1, lo que ejecuta el constructor
+        Ejercicio1 ejercicio = new Ejercicio1();
+        // Se llama al método para mostrar el resultado
+        ejercicio.mostrarResultado();
+    }
+}
+
+```
+
+
 ## Ejercicio2
 ```sh
 import java.util.Scanner;
@@ -35,6 +70,39 @@ public class Ejercicio2 {
     }
 }
 ```
+
+```sh
+import java.util.Scanner;
+
+public class Ejercicio2 {
+    private double[] numeros;
+
+    // El constructor lee 5 números decimales
+    public Ejercicio2() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduzca 5 números decimales por teclado:");
+        numeros = new double[5];
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = sc.nextDouble();
+        }
+    }
+    
+    // Método para mostrar los números leídos
+    public void mostrarNumeros() {
+        System.out.println("Los números son:");
+        for (double num : numeros) {
+            System.out.println(num);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Ejercicio2 ej2 = new Ejercicio2();
+        ej2.mostrarNumeros();
+    }
+}
+
+```
+
 
 ## Ejercicio3
 ```sh
@@ -60,6 +128,40 @@ public class Ejercicio3 {
     }
 }
 ```
+```sh
+import java.util.Scanner;
+
+public class Ejercicio3 {
+    private int[] numeros;
+
+    // El constructor solicita la cantidad de números, los lee y los almacena
+    public Ejercicio3() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("¿Cuántos números desea introducir?");
+        int cantidad = sc.nextInt();
+        numeros = new int[cantidad];
+        System.out.println("Introduzca los números:");
+        for (int i = 0; i < cantidad; i++) {
+            numeros[i] = sc.nextInt();
+        }
+    }
+
+    // Muestra los números en orden inverso
+    public void mostrarNumerosEnReversa() {
+        System.out.println("Los números en orden inverso son:");
+        for (int i = numeros.length - 1; i >= 0; i--) {
+            System.out.println(numeros[i]);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Ejercicio3 ej3 = new Ejercicio3();
+        ej3.mostrarNumerosEnReversa();
+    }
+}
+
+```
+
 
 ## Ejercicio4
 ```sh
