@@ -188,7 +188,39 @@ public class Ejercicio4 {
     }
 }
 ```
+```sh
+import javax.swing.JOptionPane;
 
+public class Ejercicio4 {
+    private int[] numeros;
+    private int maximo;
+
+    // El constructor lee 5 números mediante JOptionPane y calcula el máximo
+    public Ejercicio4() {
+        numeros = new int[5];
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = Integer.parseInt(JOptionPane.showInputDialog("Introduce un número entero:"));
+        }
+        maximo = numeros[0];
+        for (int i = 1; i < numeros.length; i++) {
+            if (numeros[i] > maximo) {
+                maximo = numeros[i];
+            }
+        }
+    }
+
+    // Muestra el valor máximo en un diálogo
+    public void mostrarMaximo() {
+        JOptionPane.showMessageDialog(null, "El máximo es: " + maximo);
+    }
+    
+    public static void main(String[] args) {
+        Ejercicio4 ej4 = new Ejercicio4();
+        ej4.mostrarMaximo();
+    }
+}
+
+```
 ## Ejercicio5
 ```sh
 import java.util.Arrays;
