@@ -391,7 +391,53 @@ public class Ejercicio7 {
     }
 }
 ```
+```sh
+import java.util.Arrays;
 
+public class Ejercicio7 {
+    private int[] original;
+    private int[] sinRepetidos;
+
+    // El constructor recibe un arreglo, lo procesa y elimina duplicados
+    public Ejercicio7(int[] array) {
+        this.original = array;
+        this.sinRepetidos = eliminarRepetidos(array);
+    }
+
+    // Método privado que elimina los elementos repetidos
+    private int[] eliminarRepetidos(int[] t) {
+        int[] temp = new int[t.length];
+        int size = 0;
+        for (int i = 0; i < t.length; i++) {
+            boolean repetido = false;
+            for (int j = 0; j < size; j++) {
+                if (t[i] == temp[j]) {
+                    repetido = true;
+                    break;
+                }
+            }
+            if (!repetido) {
+                temp[size++] = t[i];
+            }
+        }
+        int[] resultado = new int[size];
+        System.arraycopy(temp, 0, resultado, 0, size);
+        return resultado;
+    }
+
+    // Muestra el arreglo sin elementos repetidos
+    public void mostrarResultado() {
+        System.out.println("Array sin repetidos: " + Arrays.toString(sinRepetidos));
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 2, 3, 4, 4, 5};
+        Ejercicio7 ej7 = new Ejercicio7(array);
+        ej7.mostrarResultado();
+    }
+}
+
+```
 ## Ejercicio8
 ```sh
 import java.util.Arrays;
