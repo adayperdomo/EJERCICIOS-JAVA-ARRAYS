@@ -567,7 +567,52 @@ public class Ejercicio9 {
     }
 }
 ```
+```sh
+import java.util.Arrays;
+import java.util.Scanner;
 
+public class Ejercicio9 {
+    private int[] puntos;
+
+    // El constructor lee las 5 puntuaciones iniciales, las ordena e inicia el proceso de inserción
+    public Ejercicio9() {
+        Scanner sc = new Scanner(System.in);
+        puntos = new int[5];
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Puntos programador (" + (i + 1) + "): ");
+            puntos[i] = sc.nextInt();
+        }
+        Arrays.sort(puntos);
+        System.out.println("Puntuación inicial: " + Arrays.toString(puntos));
+        
+        System.out.print("Puntos del programador de exhibición: ");
+        int puntosProgExh = sc.nextInt();
+        while (puntosProgExh != -1) {
+            int pos = Arrays.binarySearch(puntos, puntosProgExh);
+            int indiceInsercion = (pos < 0) ? -pos - 1 : pos;
+            int[] copia = new int[puntos.length + 1];
+            System.arraycopy(puntos, 0, copia, 0, indiceInsercion);
+            System.arraycopy(puntos, indiceInsercion, copia, indiceInsercion + 1, puntos.length - indiceInsercion);
+            copia[indiceInsercion] = puntosProgExh;
+            puntos = copia;
+            
+            System.out.print("Puntos del programador de exhibición: ");
+            puntosProgExh = sc.nextInt();
+        }
+    }
+
+    // Muestra la puntuación final
+    public void mostrarPuntuacionFinal() {
+        System.out.println("Puntuación final: " + Arrays.toString(puntos));
+    }
+
+    public static void main(String[] args) {
+        Ejercicio9 ej9 = new Ejercicio9();
+        ej9.mostrarPuntuacionFinal();
+    }
+}
+
+```
 ## Ejercicio10
 ```sh
 import java.util.Arrays;
