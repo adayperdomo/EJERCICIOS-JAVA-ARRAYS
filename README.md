@@ -327,7 +327,36 @@ public class Ejercicio6 {
     }
 }
 ```
+```sh
+public class Ejercicio6 {
+    private int[] primitiva;
+    private int[] ganadora;
+    private int aciertos;
 
+    // El constructor inicializa ambos arreglos y cuenta las coincidencias
+    public Ejercicio6() {
+        primitiva = new int[]{4, 9, 7, 1, 6, 2};
+        ganadora = new int[]{2, 3, 1, 3, 6, 2};
+        aciertos = 0;
+        for (int i = 0; i < primitiva.length; i++) {
+            if (primitiva[i] == ganadora[i]) {
+                aciertos++;
+            }
+        }
+    }
+
+    // Muestra la cantidad de aciertos
+    public void mostrarResultado() {
+        System.out.println("Acertaste " + aciertos + " números");
+    }
+
+    public static void main(String[] args) {
+        Ejercicio6 ej6 = new Ejercicio6();
+        ej6.mostrarResultado();
+    }
+}
+
+```
 ## Ejercicio7
 ```sh
 import java.util.Arrays;
